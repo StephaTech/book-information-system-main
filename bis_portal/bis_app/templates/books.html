@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- this call page extension index.html and load the menu content-->
+{% extends "index.html"%}
+{% load static %}
+
+{% block main_content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #a9dfbf;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #4A148C;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            color: #6A1B9A;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #6A1B9A;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #4A148C;
+        }
+        .search-results {
+            margin-top: 20px;
+        }
+        .book-item {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #6A1B9A;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>Find your next great read</h2>
+
+</header>
+
+<!-- <nav>
+    <a href="#">Home</a>
+    <a href="#">Books</a>
+    <a href="#">Authors</a>
+    <a href="#">Genres</a>
+    <a href="#">Contact Us</a>
+</nav> -->
+
+<main>
+    <section>
+        <h2>Search for a Book</h2>
+        <form action="#" method="GET">
+            <label for="search">Enter book title, author, or genre:</label>
+            <input type="text" id="search" name="search" placeholder="e.g., The Great Gatsby">
+            <input type="submit" value="Search">
+        </form>
+    </section>
+
+    <section class="search-results">
+        <h2>Search Results</h2>
+        <div class="book-item">
+            <h3>Book Title</h3>
+            <p>Author: John Doe</p>
+            <p>Genre: Fiction</p>
+            <p>Summary: This is a brief description of the book.</p>
+        </div>
+        <div class="book-item">
+            <h3>Another Book Title</h3>
+            <p>Author: Jane Smith</p>
+            <p>Genre: Mystery</p>
+            <p>Summary: This is a brief description of the book.</p>
+        </div>
+        <!-- Additional book items can be added here -->
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Book Club. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+
+
+{% endblock %}

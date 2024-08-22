@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <style> 
+     /* <!-- defining a general style for .my_label them I just need call class = .my_label --> */
+        .my_label{
+            color:red;
+            font-size: 20px;
+        }
+
+        .my_secondary{
+            color:rgb(20, 46, 165);
+            font-size: 20px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Information Management</title>
+</head>
+<body>
+
+<!-- This page will be called in views.py under function code -->
+<h1>Welcome to our Book Club Information</h1>
+<!-- to get data infomation from members I need to create a form -->
+<form method="POST" action="/save"> <!--request route in POST-->
+    {% csrf_token %}
+    <!-- <table border="1"> table can have many borders just research -->
+    <table>
+    <!-- <thead>
+        <tr> tr represent row in a cell
+            <th>Field Name</th> th means header
+            <th>Field Value</th>
+        </tr>
+    </thead> -->
+    <tbody>
+        <tr>
+            <td><label class="my_label">Member name:</label></td>
+            <td><input type="text" name="member_name"> <!--key value for read from POST--></td>
+              
+        </tr>
+         <tr>
+            <td><label class="my_secondary">age:</label></td>
+            <td><input type="text" name="age_"> <!--key value for read from POST--></td>  
+        </tr>
+         <tr>
+            <td colspan="2"><button type="submit" style="background:green;display:block;margin-top:15px;margin-bottom:15px;font-size: 20px;width:100%;color: rgb(246, 247, 245);">Save</button></td>
+              
+        </tr>        
+    </tbody>
+    </table>
+
+    
+    
+    
+    
+    
+    
+</form>
+<a href="/shop">Shopping</a>
+
+</body>
+</html>
