@@ -4,15 +4,42 @@
 {% load static %}
 
 {% block main_content %}
-
+<main role="main">
 <div class="jumbotron">
     <div class="container">
-        <img src="{% static '/logo_small.jpg' %}" class="rounded float-start" alt="bis" height="150" style="margin-right: 20px;">Book Library</span>
+        <img src="{% static '/logo_small.jpg' %}" class="rounded float-start" alt="bis" height="150" style="margin-right: 20px;">Book Club Library</span>
         <h1 class="display-4">Hello, Members!</h1>
         <p>Welcome to the Book Club</p>
-        <button type="button" class="btn btn-success">Browse our collection</button>
-
-
+        <p><a role="button" href="#" class="btn btn-primary btn-lg">Browse our collection</a></p>
     </div>
 </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                <h2>Heading here</h2>
+                <p> text here</p>
+                </div>
+                <div class="col">
+                <h2>Heading here</h2>
+                <ul>
+                    <li>list bullets</li>
+                    <li>list bullets</li>
+                </ul>
+                
+                </div>
+                <div class="col">
+                <h2>Heading here</h2>
+                <p> text here</p>
+                </div>
+            </div>
+            <hr>
+</div>
+</main>
+
+<footer class="container">
+<p>Book Club Library 2024</p>
+
+</footer>
+
+
 {% endblock %}
