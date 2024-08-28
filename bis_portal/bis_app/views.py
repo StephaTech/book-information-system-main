@@ -26,12 +26,20 @@ def save_member(request):
     return render(request,"welcome.html", context={'member_name':member_name})
 
 def members_tab(request):
-    members = member.objects.all()
-    return render(request,"members.html",
+    if request.method=="GET":
+        members = member.objects.all()
+        return render(request,"members.html",
                   context={"current_tab": "members",
                            "members":members}
                 ) #observe that I am calling the members.html page
-
+    else:
+        query = request.POST['query']
+        members = member.objects.raw("select * from bis_app_member where member_name like '%"+query+"%'")
+        return render(request,"members.html",
+                  context={"current_tab": "members",
+                           "members":members,"query": query}
+                ) #observe that I am calling the members.html page
+    
 def save_member(request): 
     # Creating a property for model member
     member_item = member(reference_id=request.POST['member_reference_id'],

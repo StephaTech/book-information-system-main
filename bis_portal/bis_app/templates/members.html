@@ -59,8 +59,9 @@
             <nav class="navbar bg-body-light">
                 <div class="container-fluid justify-content-center align-items-center">
                     <!-- using boostrap for navbar - https://getbootstrap.com/docs/5.3/components/navbar/?-->
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex" role="search" action="/members" method="POST">
+                        {% csrf_token %}
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query" value="{{query}}">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>    
