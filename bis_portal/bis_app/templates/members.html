@@ -20,9 +20,9 @@
 <div class="row">
     <div class="col-md-4">
         <div class="container" style="overflow-y:auto;height:600px;background:#90d1a9"> <!-- inserting a background I will be able to see how much space the container took on this template when runserver and refresh the page -->
-            <form class="d-flex" action="#" method="POST">
-                {%csrf_token %}  <!-- to protect from cross-site -->
-                <!-- adding labels and to be displayed on the web page -->
+            <form class="d-flex" action="/members/add" method="POST">
+                {% csrf_token %}  <!-- to protect from cross-site -->
+                <!-- adding labels and input field to be displayed on the web page -->
                 <table class="table" style="margin-top: 20px;">
                     <tr>
                         <td style="text-align: left;vertical-align:middle; padding-left: 15px;">Name : </td>
@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: left;vertical-align:middle; padding-left: 15px;">Reference ID : </td>
-                        <td><input type="text" class="form-control" name="member_ID"></td>
+                        <td><input type="text" class="form-control" name="member_reference_id"></td>
                     </tr>
                     <tr>
                         <td style="text-align: left;vertical-align:middle; padding-left: 15px;">Country : </td>
@@ -63,10 +63,49 @@
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
-                </div>
-                
+                </div>    
             </nav>
         </div>
+        <div class="row" style="margin-top: 20px;">
+            <p>{{members | length}} members subscribed.</p>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="container" style="overflow-y:auto;height:400px">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td>Member ID</td>
+                            <td>Name</td>
+                            <td>Contact</td>
+                            <td>Reference ID</td>
+                            <td>Country</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for member in members %}
+                            <tr>
+                                <td>{{member.id}}</td>
+                                <td>{% if member.active %}
+                                        <span class="btn btn-success">{{member.member_name}}</span>
+                                    {% else %}
+                                        <span class="btn btn-secondary">{{member.member_name}}</span>
+
+                                    {% endif %}
+                                </td>
+                                <td>{{member.member_contact}}</td>
+                                <td>{{member.reference_id}}</td>
+                                <td>{{member.member_country}}</td>
+                            </tr>
+
+                        {% endfor %}
+                    </tbody>
+
+
+                </table>
+
+            </div>
+        </div>
+
     </div>
 </div>
     

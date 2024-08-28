@@ -17,12 +17,14 @@ Including another URLconf
 #from django.contrib import admin
 from django.urls import path
 from .views import *
-
+# important is names need to be correct look urls.py/models.py/views.py
 urlpatterns = [
     path('', home),
     path('home/', home),
-    path('members', members),
+    path('members', members_tab),
     path('books', books),
     path('save', save_member),
+    path('members/add', save_member), # I will find reference at member.html form action="members/add"
+    
     
 ]
