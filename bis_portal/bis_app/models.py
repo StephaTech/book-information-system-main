@@ -8,5 +8,5 @@ class member(models.Model):
     reference_id=models.CharField(max_length=200)
     member_name=models.CharField(max_length=200)
     member_contact=models.CharField(max_length=200)
-    member_address=models.TextField()
+    member_country=models.TextField()
     active=models.BooleanField(default=True)
