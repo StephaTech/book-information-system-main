@@ -25,6 +25,6 @@ urlpatterns = [
     path('books', books),
     path('save', save_member),
     path('members/add', save_member), # I will find reference at member.html form action="members/add"
-    
+    # path('members_id', delete_member),
     
 ]

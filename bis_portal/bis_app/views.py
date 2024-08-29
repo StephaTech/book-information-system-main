@@ -32,6 +32,12 @@ def members_tab(request):
                   context={"current_tab": "members",
                            "members":members}
                 ) #observe that I am calling the members.html page
+    
+    # elif "delete" in request.POST:
+    #         id = request.POST.get("member.id")
+    #         member.objects.get(id=id).delete()
+    #         return redirect('/members')
+    #         messages.success(request, "member deleted successfully")
     else:
         query = request.POST['query']
         members = member.objects.raw("select * from bis_app_member where member_name like '%"+query+"%'")
@@ -39,6 +45,8 @@ def members_tab(request):
                   context={"current_tab": "members",
                            "members":members,"query": query}
                 ) #observe that I am calling the members.html page
+    
+
     
 def save_member(request): 
     # Creating a property for model member
@@ -48,5 +56,28 @@ def save_member(request):
                          member_country=request.POST['member_country'],
                          active=True
                          )
+
     member_item.save()
     return redirect('/members') #help to reload the page
+
+# def delete_member(request):
+#     members = member.objects.get(members)
+
+#     if request.method == 'POST':
+#         members.delete()
+#         return redirect('/members')
+
+#     context = {'members' :members}
+#     return render(request, 'members.html', context)
+
+# def delete_member(request): 
+#     # Creating a property for model member
+#     member_item = member(reference_id=request.POST['member_reference_id'],
+#                          member_name=request.POST['member_name'],
+#                          member_contact=request.POST['member_contact'],
+#                          member_country=request.POST['member_country'],
+#                          active=True
+#                          )
+
+#     member_item.delete()
+#     return redirect('/members') #help to reload the page
