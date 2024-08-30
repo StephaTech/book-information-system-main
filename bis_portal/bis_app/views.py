@@ -32,12 +32,6 @@ def members_tab(request):
                   context={"current_tab": "members",
                            "members":members}
                 ) #observe that I am calling the members.html page
-    
-    # elif "delete" in request.POST:
-    #         id = request.POST.get("member.id")
-    #         member.objects.get(id=id).delete()
-    #         return redirect('/members')
-    #         messages.success(request, "member deleted successfully")
     else:
         query = request.POST['query']
         members = member.objects.raw("select * from bis_app_member where member_name like '%"+query+"%'")
@@ -48,7 +42,7 @@ def members_tab(request):
     
 
     
-def save_member(request): 
+def save_member(request): #path('members/add', save_member),path('save', save_member),
     # Creating a property for model member
     member_item = member(reference_id=request.POST['member_reference_id'],
                          member_name=request.POST['member_name'],
@@ -59,6 +53,36 @@ def save_member(request):
 
     member_item.save()
     return redirect('/members') #help to reload the page
+
+def update_member(request):
+            id = request.POST.get("id")
+            member_name = request.POST.get("member_name")
+            member_contact = request.POST.get("member_contact")
+            member_reference_id = request.POST.get("member_reference_id")
+            member_country = request.POST.get("member_country")
+            members =member.objects.get(id=id)
+            member.member_name = member_name
+            member.member_contact = member_contact
+            member.reference_id = member_reference_id
+            member.member_country = member_country
+            members.save()
+            return redirect('/members')
+            #messages.success(request, "student updated successfully")
+
+# def update_member(request):
+#             id = request.POST.get("id")
+#             member_name = request.POST.get("member_name")
+#             member_contact = request.POST.get("member_contact")
+#             member_reference_id = request.POST.get("member_reference_id")
+#             member_country = request.POST.get("member_country")
+#             members =member.objects.get(id=id)
+#             member.member_name = member_name
+#             member.member_contact = member_contact
+#             member.reference_id = member_reference_id
+#             member.member_country = member_country
+#             members.save()
+#             return redirect('/members')
+#             #messages.success(request, "student updated successfully")
 
 # def delete_member(request):
 #     members = member.objects.get(members)

@@ -103,7 +103,7 @@
                     <!-- update member modal I am using boostrap modal - https://getbootstrap.com/docs/5.3/components/modal/#how-it-works-->
                     <div class="modal fade" id="updatememberModal_{{member.id}}" tabindex="-1" aria-labelledby="updatememberModal_{{member.id}}Label" aria-hidden="true">
                         <div class="modal-dialog">
-                            <form action="" method="post">  <!-- <form action="" method="post">  -->
+                            <form action="members/update" method="post">  <!-- <form action="" method="post">  -->
                                 {% csrf_token %}
                                 <div class="modal-content">
                                     <div class="modal-header">
