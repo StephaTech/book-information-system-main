@@ -98,13 +98,14 @@
                                 <td>{{member.reference_id}}</td>
                                 <td>{{member.member_country}}</td>
                                 <td><a href="" data-bs-toggle="modal" data-bs-target="#updatememberModal_{{member.id}}" class="btn btn-sm btn-success"><i class="fa-regular fa-pen-to-square"></i></a>
-                            <a href="" data-bs-toggle="modal" data-bs-target="#delete_member{{member_item}}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a></td>
+                            <a href="" data-bs-toggle="modal" data-bs-target="#delete_member{{member.id}}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a></td>
                             </tr>
                     <!-- update member modal I am using boostrap modal - https://getbootstrap.com/docs/5.3/components/modal/#how-it-works-->
                     <div class="modal fade" id="updatememberModal_{{member.id}}" tabindex="-1" aria-labelledby="updatememberModal_{{member.id}}Label" aria-hidden="true">
                         <div class="modal-dialog">
                             <form action="members/update" method="post">  <!-- <form action="" method="post">  -->
                                 {% csrf_token %}
+                                
                                 <div class="modal-content">
                                     <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="updatememberModal_{{member.id}}Label">Update New Member</h1>
@@ -140,9 +141,9 @@
                     </div>
 
                     <!-- delete student modal -->
-                    <div class="modal fade" id="deletestudentModal_{{student.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deletestudentModal_{{student.id}}Label" aria-hidden="true">
+                    <div class="modal fade" id="deletestudentModal_{{member.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deletestudentModal_{{member.id}}Label" aria-hidden="true">
                         <div class="modal-dialog">
-                            <form action="" method="post">
+                            <form action="members/delete" method="post">
                                 {% csrf_token %}
                                 <input type="hidden" name="id" value="{{student.id}}">
                                 <div class="modal-content">

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.contrib import admin
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -53,22 +53,90 @@ def save_member(request): #path('members/add', save_member),path('save', save_me
 
     member_item.save()
     return redirect('/members') #help to reload the page
+    # if request.method == "POST":
+    #     if "update" in request.POST:
+    #         id = request.POST.get("id")
+    #         member_name = request.POST.get("member_name")
+    #         member_contact = request.POST.get("member_contact")
+    #         member_reference_id = request.POST.get("member_reference_id")
+    #         member_country = request.POST.get("member_country")
+    #         members =member.objects.get(id=id)
+    #         member.member_name = member_name
+    #         member.member_contact = member_contact
+    #         member.reference_id = member_reference_id
+    #         member.member_country = member_country
+    #         members.save()
 
-def update_member(request):
-            id = request.POST.get("id")
-            member_name = request.POST.get("member_name")
-            member_contact = request.POST.get("member_contact")
-            member_reference_id = request.POST.get("member_reference_id")
-            member_country = request.POST.get("member_country")
-            members =member.objects.get(id=id)
-            member.member_name = member_name
-            member.member_contact = member_contact
-            member.reference_id = member_reference_id
-            member.member_country = member_country
-            members.save()
-            return redirect('/members')
-            #messages.success(request, "student updated successfully")
+    
+    
+# if request.method == "POST":
+#     if "update" in request.POST:
+#         id = request.POST.get("id")
+#         member_name = request.POST.get("member_name")
+#         member_contact = request.POST.get("member_contact")
+#         member_reference_id = request.POST.get("member_reference_id")
+#         member_country = request.POST.get("member_country")
+#         members =member.objects.get(id=id)
+#         member.member_name = member_name
+#         member.member_contact = member_contact
+#         member.reference_id = member_reference_id
+#         member.member_country = member_country
+#         members.save()
+        #return redirect('/members')
+########################################
+# def update_member(request):
+#         if request.method == "POST":
+#             if "update" in request.POST:
+#                 id = request.POST.get("id")
+#                 member_name = request.POST.get("member_name")
+#                 member_contact = request.POST.get("member_contact")
+#                 member_reference_id = request.POST.get("member_reference_id")
+#                 member_country = request.POST.get("member_country")
+#                 members =member.objects.get(id=id)
+#                 member.member_name = member_name
+#                 member.member_contact = member_contact
+#                 member.reference_id = member_reference_id
+#                 member.member_country = member_country
+#                 members.save()
+#                 return redirect('/members')
+#             #messages.success(request, "student updated successfully")
+##DELETE TRIALS
+# def delete_member(request): #path('members/add', save_member),path('save', save_member),
+#     # Creating a property for model member
+#     member_item = member(reference_id=request.POST['member_reference_id'],
+#                          member_name=request.POST['member_name'],
+#                          member_contact=request.POST['member_contact'],
+#                          member_country=request.POST['member_country'],
+#                          active=True
+#                          )
 
+#     member_item.delete()
+#     return redirect('/members')
+
+
+# def delete_member(request, id):
+#     members = get_object_or_404(member, id=id)
+#     if request.method == "POST":
+#         members.delete()
+#         return redirect('/members')  # Redirect after successful delete
+    #return render(request, '/members', {'object': members})
+
+# def delete_member(request):
+#      if request.POST:
+#             id = request.POST.get("id")
+#             members.objects.get(id=id).delete()
+            #messages.success(request, "student deleted successfully")
+    #delete_member.save()
+#           return redirect('/members') #help to reload the page
+
+# def delete_member(request):
+#      if request.POST:
+#             id = request.POST.get("id")
+#             members.objects.get(id=id).delete()
+#             messages.success(request, "student deleted successfully")
+#     delete_member.save()
+#             return redirect('/members') #help to reload the page
+#############################
 # def update_member(request):
 #             id = request.POST.get("id")
 #             member_name = request.POST.get("member_name")
