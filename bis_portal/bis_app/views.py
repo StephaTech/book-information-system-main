@@ -53,6 +53,47 @@ def save_member(request): #path('members/add', save_member),path('save', save_me
 
     member_item.save()
     return redirect('/members') #help to reload the page
+
+#function books
+# def save_book(request):
+#     book_title = request.POST['book_title']
+#     #return HttpResponse("Welcome to Book Library - "+ member_name) #will retrieve name typed on the web and displayed on the web
+#     return render(request,"welcome.html", context={'book_title':book_title})
+
+def books_tab(request):
+    if request.method=="GET":
+        books = book.objects.all()
+        return render(request,"books.html",
+                  context={"current_tab": "books",
+                           "books":books}
+                ) #observe that I am calling the members.html page
+    else:
+        query = request.POST['query']
+        books = book.objects.raw("select * from bis_app_book where book_title like '%"+query+"%'")
+        return render(request,"books.html",
+                  context={"current_tab": "books",
+                           "books":books,"query": query}
+                ) #observe that I am calling the members.html page
+    
+def save_book(request): #path('members/add', save_member),path('save', save_member),
+    # Creating a property for model member
+        books = book.objects.all()
+        if request.method == "POST":
+            if "create" in request.POST:
+                book_title = request.POST.get("book_title")
+                book_author = request.POST.get("book_author")
+                book_genre = request.POST.get("book_genre")
+                book_language = request.POST.get("book_language")
+                book.objects.create(
+                    book_title=book_title,
+                    book_author=book_author,
+                    book_genre=book_genre,
+                    book_language=book_language
+                )
+
+                #books.save()
+        return redirect('/books') #help to reload the page
+
     # if request.method == "POST":
     #     if "update" in request.POST:
     #         id = request.POST.get("id")

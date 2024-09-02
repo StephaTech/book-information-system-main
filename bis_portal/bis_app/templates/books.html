@@ -6,138 +6,170 @@
 {% block main_content %}
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Books</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #a9dfbf;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #4A148C;
-            padding: 10px;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-        }
-        h1 {
-            color: #6A1B9A;
-        }
-        form {
-            margin-bottom: 20px;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        input[type="submit"] {
-            background-color: #6A1B9A;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #4A148C;
-        }
-        .search-results {
-            margin-top: 20px;
-        }
-        .book-item {
-            background-color: #fff;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: #6A1B9A;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
-</head>
-<body>
+<!-- <h1>I am in Members page</h1> -->
+<div class="container-flex text-center justify-content-center align-items-center" style="">
+<div class="row justify-content-center align-middle" style="margin-top: 10px;height:60px;">
+    <div class="col-md-4 text-light" style="background-color:#a9dfbf;">
+        <h4 style="margin-top:15px">Register new book</h4>
+    </div>
+    <div class="col-md-8">
+        <!-- gives colun an row a percentage of page  -->
+       
+        <h4 style="margin-top:15px">Search books</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="container" style="overflow-y:auto;height:600px;background:#90d1a9"> <!-- inserting a background I will be able to see how much space the container took on this template when runserver and refresh the page -->
+            <form class="d-flex" action="books/add" method="POST">
+                {% csrf_token %}  <!-- to protect from cross-site -->
+                <!-- adding labels and input field to be displayed on the web page -->
+                <table class="table" style="margin-top: 20px;">
+                    <tr>
+                        <td style="text-align: left;vertical-align:middle; padding-left: 15px;">Title : </td>
+                        <td><input type="text" class="form-control" name="book_title"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;vertical-align:middle; padding-left: 15px;">Author : </td>
+                        <td><input type="text" class="form-control" name="book_author"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;vertical-align:middle; padding-left: 15px;">Genre : </td>
+                        <td><input type="text" class="form-control" name="book_genre"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;vertical-align:middle; padding-left: 15px;">Language : </td>
+                        <td><input type="text" class="form-control" name="book_language"></td>
+                    </tr>
+                    <tr>
+                        <!-- using boostrap for button - https://getbootstrap.com/docs/5.3/components/buttons/-->
+                        <td colspan="2"><button class="btn btn-success" type="submit">Save</button></td>
+                    </tr>
+                </table>
+            </form>
+            <ul style="text-align: left;vertical-align: middle;padding-left: 15px;">
+                <li><small>Book should register only once</small></li>
+                <li><small>Book should not register multiple times</small></li>
+                <li><small>Duplicate books registration will be deactivated</small></li>
 
-<header>
-    <h2>Find your next great read</h2>
-
-</header>
-
-<!-- <nav>
-    <a href="#">Home</a>
-    <a href="#">Books</a>
-    <a href="#">Authors</a>
-    <a href="#">Genres</a>
-    <a href="#">Contact Us</a>
-</nav> -->
-
-<main>
-    <section>
-        <h2>Search for a Book</h2>
-        <form action="#" method="GET">
-            <label for="search">Enter book title, author, or genre:</label>
-            <input type="text" id="search" name="search" placeholder="e.g., The Great Gatsby">
-            <input type="submit" value="Search">
-        </form>
-    </section>
-
-    <section class="search-results">
-        <h2>Search Results</h2>
-        <div class="book-item">
-            <h3>Book Title</h3>
-            <p>Author: John Doe</p>
-            <p>Genre: Fiction</p>
-            <p>Summary: This is a brief description of the book.</p>
+            </ul>
         </div>
-        <div class="book-item">
-            <h3>Another Book Title</h3>
-            <p>Author: Jane Smith</p>
-            <p>Genre: Mystery</p>
-            <p>Summary: This is a brief description of the book.</p>
+    </div>
+    <div class="col-md-8"> 
+        <div class="row">
+            <nav class="navbar bg-body-light">
+                <div class="container-fluid justify-content-center align-items-center">
+                    <!-- using boostrap for navbar - https://getbootstrap.com/docs/5.3/components/navbar/?-->
+                    <form class="d-flex" role="search" action="/books" method="POST">
+                        {% csrf_token %}
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query" value="{{query}}">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>    
+            </nav>
         </div>
-        <!-- Additional book items can be added here -->
-    </section>
-</main>
+        <div class="row" style="margin-top: 20px;">
+            <p>{{books | length}} books listed.</p>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="container" style="overflow-y:auto;height:400px">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td>Book ID</td>
+                            <td>Title</td>
+                            <td>Author</td>
+                            <td>Genre</td>
+                            <td>Language</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                            <tr>
+                                <td>{{book.id}}</td>
+                                <td>{% if book.active %}
+                                        <span class="btn btn-success">{{book.book_title}}</span>
+                                    {% else %}
+                                        <span class="btn btn-secondary">{{book.book_title}}</span>
 
-<footer>
-    <p>&copy; 2025 Book Club. All rights reserved.</p>
-</footer>
+                                    {% endif %}
+                                </td>
+                                <td>{{book.book_author}}</td>
+                                <td>{{book.book_genre}}</td>
+                                <td>{{book.book_language}}</td>
+                                <td><a href="" data-bs-toggle="modal" data-bs-target="#updatememberModal_{{book.id}}" class="btn btn-sm btn-success"><i class="fa-regular fa-pen-to-square"></i></a>
+                            <a href="" data-bs-toggle="modal" data-bs-target="#delete_member{{book.id}}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a></td>
+                            </tr>
+                    <!-- update member modal I am using boostrap modal - https://getbootstrap.com/docs/5.3/components/modal/#how-it-works-->
+                    <div class="modal fade" id="updatememberModal_{{member.id}}" tabindex="-1" aria-labelledby="updatememberModal_{{member.id}}Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form action="members/update" method="post">  <!-- <form action="" method="post">  -->
+                                {% csrf_token %}
+                                
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="updatememberModal_{{member.id}}Label">Update New Member</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" name="id" value="{{member.id}}"> <!-- <name = id>  -->
+                                        <div class="">
+                                            <label for="member_name">Member Name</label><!-- <for= name = member name>  -->
+                                            <input required type="text" value="{{member.member_name}}" name="member_name" class="form-control"> <!-- <name = name  -->
+                                        </div>
+                                        <div class="">
+                                            <label for="member_contact">Member Contact</label><!-- <for= name = member name>  -->
+                                            <input required type="text" value="{{member.member_contact}}" name="member_contact" class="form-control"> <!-- <name = name  -->
+                                        </div>
+                                        <div class="">
+                                            <label for="member_reference_id">Member Reference ID</label><!-- <for= name = member name>  -->
+                                            <input required type="text" value="{{member.reference_id}}" name="member_reference_id" class="form-control"> <!-- <name = name  -->
+                                        </div>
+                                        <div class="">
+                                            <label for="member_country">Member Country</label><!-- <for= name = member name>  -->
+                                            <input required type="text" value="{{member.member_country}}" name="member_country" class="form-control"> <!-- <name = name  -->
+                                        </div>
+    
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary" name="update">Update student</button> <!-- name=update  -->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
 
-</body>
-</html>
+                    <!-- delete student modal -->
+                    <div class="modal fade" id="deletestudentModal_{{member.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deletestudentModal_{{member.id}}Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form action="members/delete" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="id" value="{{student.id}}">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <p>Are you sure? you want to delete</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger" name="delete">Delete student</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                        {% endfor %}
+                    </tbody>
 
 
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+    
+</div>
 {% endblock %}
