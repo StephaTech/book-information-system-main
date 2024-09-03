@@ -33,6 +33,7 @@ urlpatterns = [
     path('save', save_book),
     path('books/add', save_book),
     path('books/update', save_book),
+    path('books/delete', save_book),
 
     
    

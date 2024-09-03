@@ -104,6 +104,10 @@ def save_book(request): #path('members/add', save_member),path('save', save_memb
                 update_book.book_language = book_language
                 update_book.save()
 
+            elif "books/delete" in request.POST:
+                id = request.POST.get("id")
+                book.objects.get(id=id).delete()
+
 
             
 
