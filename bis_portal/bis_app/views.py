@@ -79,7 +79,7 @@ def save_book(request): #path('members/add', save_member),path('save', save_memb
     # Creating a property for model member
         books = book.objects.all()
         if request.method == "POST":
-            if "create" in request.POST:
+            if "books/add" in request.POST:
                 book_title = request.POST.get("book_title")
                 book_author = request.POST.get("book_author")
                 book_genre = request.POST.get("book_genre")
@@ -90,6 +90,22 @@ def save_book(request): #path('members/add', save_member),path('save', save_memb
                     book_genre=book_genre,
                     book_language=book_language
                 )
+            elif "books/update" in request.POST:
+                id = request.POST.get("id")
+                book_title = request.POST.get("book_title")
+                book_author = request.POST.get("book_author")
+                book_genre = request.POST.get("book_genre")
+                book_language = request.POST.get("book_language")
+
+                update_book = book.objects.get(id=id)
+                update_book.book_title = book_title
+                update_book.book_author = book_author
+                update_book.book_genre = book_genre
+                update_book.book_language = book_language
+                update_book.save()
+
+
+            
 
                 #books.save()
         return redirect('/books') #help to reload the page

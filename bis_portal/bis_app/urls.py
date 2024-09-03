@@ -30,8 +30,10 @@ urlpatterns = [
     #path('members/update', update_member),
     #path('members/delete', delete_member),
     
-     path('save', save_book),
-     path('books/add', save_book),
+    path('save', save_book),
+    path('books/add', save_book),
+    path('books/update', save_book),
+
     
    
 ]

@@ -43,7 +43,8 @@
                     </tr>
                     <tr>
                         <!-- using boostrap for button - https://getbootstrap.com/docs/5.3/components/buttons/-->
-                        <td colspan="2"><button class="btn btn-success" type="submit">Save</button></td>
+                        <td colspan="2">
+                            <button class="btn btn-success" type="submit" name="books/add">Save</button></td>
                     </tr>
                 </table>
             </form>
@@ -98,43 +99,43 @@
                                 <td>{{book.book_author}}</td>
                                 <td>{{book.book_genre}}</td>
                                 <td>{{book.book_language}}</td>
-                                <td><a href="" data-bs-toggle="modal" data-bs-target="#updatememberModal_{{book.id}}" class="btn btn-sm btn-success"><i class="fa-regular fa-pen-to-square"></i></a>
-                            <a href="" data-bs-toggle="modal" data-bs-target="#delete_member{{book.id}}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a></td>
+                                <td><a href="" data-bs-toggle="modal" data-bs-target="#updatebookModal_{{book.id}}" class="btn btn-sm btn-success"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="" data-bs-toggle="modal" data-bs-target="#deletebookModal_{{book.id}}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a></td>
                             </tr>
                     <!-- update member modal I am using boostrap modal - https://getbootstrap.com/docs/5.3/components/modal/#how-it-works-->
-                    <div class="modal fade" id="updatememberModal_{{member.id}}" tabindex="-1" aria-labelledby="updatememberModal_{{member.id}}Label" aria-hidden="true">
+                    <div class="modal fade" id="updatebookModal_{{book.id}}" tabindex="-1" aria-labelledby="updatebookModal_{{book.id}}Label" aria-hidden="true">
                         <div class="modal-dialog">
-                            <form action="members/update" method="post">  <!-- <form action="" method="post">  -->
+                            <form action="books/update" method="post">  <!-- <form action="" method="post">  -->
                                 {% csrf_token %}
                                 
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="updatememberModal_{{member.id}}Label">Update New Member</h1>
+                                    <h1 class="modal-title fs-5" id="updatebookModal_{{book.id}}Label">Update New Book</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <input type="hidden" name="id" value="{{member.id}}"> <!-- <name = id>  -->
+                                        <input type="hidden" name="id" value="{{book.id}}">
                                         <div class="">
-                                            <label for="member_name">Member Name</label><!-- <for= name = member name>  -->
-                                            <input required type="text" value="{{member.member_name}}" name="member_name" class="form-control"> <!-- <name = name  -->
+                                            <label for="book_title">Book Title</label><!-- <for= name = member name>  -->
+                                            <input required type="text" value="{{book.book_title}}" name="book_title" class="form-control"> <!-- <name = name  -->
                                         </div>
                                         <div class="">
-                                            <label for="member_contact">Member Contact</label><!-- <for= name = member name>  -->
-                                            <input required type="text" value="{{member.member_contact}}" name="member_contact" class="form-control"> <!-- <name = name  -->
+                                            <label for="book_author">Book Author</label><!-- <for= name = member name>  -->
+                                            <input required type="text" value="{{book.book_author}}" name="book_author" class="form-control"> <!-- <name = name  -->
                                         </div>
                                         <div class="">
-                                            <label for="member_reference_id">Member Reference ID</label><!-- <for= name = member name>  -->
-                                            <input required type="text" value="{{member.reference_id}}" name="member_reference_id" class="form-control"> <!-- <name = name  -->
+                                            <label for="book_genre">Book Genre</label><!-- <for= name = member name>  -->
+                                            <input required type="text" value="{{book.book_genre}}" name="book_genre" class="form-control"> <!-- <name = name  -->
                                         </div>
                                         <div class="">
-                                            <label for="member_country">Member Country</label><!-- <for= name = member name>  -->
-                                            <input required type="text" value="{{member.member_country}}" name="member_country" class="form-control"> <!-- <name = name  -->
+                                            <label for="book_language">Book Language</label><!-- <for= name = member name>  -->
+                                            <input required type="text" value="{{book.book_language}}" name="book_language" class="form-control"> <!-- <name = name  -->
                                         </div>
     
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary" name="update">Update student</button> <!-- name=update  -->
+                                        <button type="submit" class="btn btn-primary" name="books/update">Update book</button> <!-- name=update  -->
                                     </div>
                                 </div>
                             </form>
@@ -142,11 +143,40 @@
                     </div>
 
                     <!-- delete student modal -->
+<div class="modal fade" id="deletebookModal_{{book.id}}" tabindex="-1" aria-labelledby="deletebookModal_{{book.id}}Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form action="" method="post">  <!-- <form action="" method="post">  -->
+                                {% csrf_token %}
+                                <input type="hidden" name="id" value="{{book.id}}">
+                                
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="updatebookModal_{{book.id}}Label">Delete</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete?</p>
+                                      
+    
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger" name="delete">Delete book</button> <!-- name=update  -->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+
+<!-- 
                     <div class="modal fade" id="deletestudentModal_{{member.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deletestudentModal_{{member.id}}Label" aria-hidden="true">
                         <div class="modal-dialog">
                             <form action="members/delete" method="post">
                                 {% csrf_token %}
-                                <input type="hidden" name="id" value="{{student.id}}">
+                                <input type="hidden" name="id" value="{{book.id}}">
                                 <div class="modal-content">
                                     <div class="modal-body">
                                         <p>Are you sure? you want to delete</p>
@@ -158,7 +188,9 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> -->
+                    <!-- copy -->
+                    
                         {% endfor %}
                     </tbody>
 
