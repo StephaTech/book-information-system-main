@@ -114,22 +114,7 @@ def save_book(request): #path('members/add', save_member),path('save', save_memb
                 #books.save()
         return redirect('/books') #help to reload the page
 
-    # if request.method == "POST":
-    #     if "update" in request.POST:
-    #         id = request.POST.get("id")
-    #         member_name = request.POST.get("member_name")
-    #         member_contact = request.POST.get("member_contact")
-    #         member_reference_id = request.POST.get("member_reference_id")
-    #         member_country = request.POST.get("member_country")
-    #         members =member.objects.get(id=id)
-    #         member.member_name = member_name
-    #         member.member_contact = member_contact
-    #         member.reference_id = member_reference_id
-    #         member.member_country = member_country
-    #         members.save()
-
-    
-    
+#>>>>>>>>>>>>>>>>UPDATE TRIALS<<<<<<<<<<<<<<<<<<<<<<< 
 # if request.method == "POST":
 #     if "update" in request.POST:
 #         id = request.POST.get("id")
@@ -161,7 +146,23 @@ def save_book(request): #path('members/add', save_member),path('save', save_memb
 #                 members.save()
 #                 return redirect('/members')
 #             #messages.success(request, "student updated successfully")
-##DELETE TRIALS
+
+# def update_member(request):
+#             id = request.POST.get("id")
+#             member_name = request.POST.get("member_name")
+#             member_contact = request.POST.get("member_contact")
+#             member_reference_id = request.POST.get("member_reference_id")
+#             member_country = request.POST.get("member_country")
+#             members =member.objects.get(id=id)
+#             member.member_name = member_name
+#             member.member_contact = member_contact
+#             member.reference_id = member_reference_id
+#             member.member_country = member_country
+#             members.save()
+#             return redirect('/members')
+#             #messages.success(request, "student updated successfully")
+
+#>>>>>>>>>>>>>>>>DELETE TRIALS<<<<<<<<<<<<<<<<<<<<<<<
 # def delete_member(request): #path('members/add', save_member),path('save', save_member),
 #     # Creating a property for model member
 #     member_item = member(reference_id=request.POST['member_reference_id'],
@@ -186,32 +187,9 @@ def save_book(request): #path('members/add', save_member),path('save', save_memb
 #      if request.POST:
 #             id = request.POST.get("id")
 #             members.objects.get(id=id).delete()
-            #messages.success(request, "student deleted successfully")
-    #delete_member.save()
-#           return redirect('/members') #help to reload the page
-
-# def delete_member(request):
-#      if request.POST:
-#             id = request.POST.get("id")
-#             members.objects.get(id=id).delete()
 #             messages.success(request, "student deleted successfully")
 #     delete_member.save()
 #             return redirect('/members') #help to reload the page
-#############################
-# def update_member(request):
-#             id = request.POST.get("id")
-#             member_name = request.POST.get("member_name")
-#             member_contact = request.POST.get("member_contact")
-#             member_reference_id = request.POST.get("member_reference_id")
-#             member_country = request.POST.get("member_country")
-#             members =member.objects.get(id=id)
-#             member.member_name = member_name
-#             member.member_contact = member_contact
-#             member.reference_id = member_reference_id
-#             member.member_country = member_country
-#             members.save()
-#             return redirect('/members')
-#             #messages.success(request, "student updated successfully")
 
 # def delete_member(request):
 #     members = member.objects.get(members)
