@@ -42,24 +42,20 @@ def members_tab(request):
     
 
     
-def save_member(request): #path('members/add', save_member),path('save', save_member),
-    # Creating a property for model member
-    member_item = member(reference_id=request.POST['member_reference_id'],
-                         member_name=request.POST['member_name'],
-                         member_contact=request.POST['member_contact'],
-                         member_country=request.POST['member_country'],
-                         active=True
-                         )
+# def save_member(request): #path('members/add', save_member),path('save', save_member),
+#     # Creating a property for model member
+#     member_item = member(reference_id=request.POST['member_reference_id'],
+#                          member_name=request.POST['member_name'],
+#                          member_contact=request.POST['member_contact'],
+#                          member_country=request.POST['member_country'],
+#                          active=True
+#                          )
 
-    member_item.save()
-    return redirect('/members') #help to reload the page
+#     member_item.save()
+#     return redirect('/members') #help to reload the page
 
-#function books
-# def save_book(request):
-#     book_title = request.POST['book_title']
-#     #return HttpResponse("Welcome to Book Library - "+ member_name) #will retrieve name typed on the web and displayed on the web
-#     return render(request,"welcome.html", context={'book_title':book_title})
 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>Books function<<<<<<<<<<<<<<<<<<<<<<<
 def books_tab(request):
     if request.method=="GET":
         books = book.objects.all()
@@ -76,7 +72,7 @@ def books_tab(request):
                 ) #observe that I am calling the members.html page
     
 def save_book(request): #path('members/add', save_member),path('save', save_member),
-    # Creating a property for model member
+    # Creating a property for model book
         books = book.objects.all()
         if request.method == "POST":
             if "books/add" in request.POST:
@@ -114,7 +110,45 @@ def save_book(request): #path('members/add', save_member),path('save', save_memb
                 #books.save()
         return redirect('/books') #help to reload the page
 
+
 #>>>>>>>>>>>>>>>>UPDATE TRIALS<<<<<<<<<<<<<<<<<<<<<<< 
+
+def save_member(request): #path('members/add', save_member),path('save', save_member),
+    # Creating a property for model member
+        members = member.objects.all()
+        if request.method == "POST":
+            if "members/add" in request.POST:
+                member_name = request.POST.get("member_name")
+                member_contact = request.POST.get("member_contact")
+                reference_id = request.POST.get("reference_id")
+                member_country = request.POST.get("member_country")
+                member.objects.create(
+                    member_name=member_name,
+                    member_contact=member_contact,
+                    reference_id=reference_id,
+                    member_country=member_country
+                )
+            elif "members/update" in request.POST:
+                id = request.POST.get("id")
+                member_name = request.POST.get("member_name")
+                member_contact = request.POST.get("member_contact")
+                reference_id = request.POST.get("reference_id")
+                member_country = request.POST.get("member_country")
+
+                update_member = member.objects.get(id=id)
+                update_member.member_name = member_name
+                update_member.member_contact = member_contact
+                update_member.reference_id = reference_id
+                update_member.member_country = member_country
+                update_member.save()
+
+            elif "members/delete" in request.POST:
+                id = request.POST.get("id")
+                member.objects.get(id=id).delete()            
+
+                #books.save()
+        return redirect('/members') #help to reload the page
+
 # if request.method == "POST":
 #     if "update" in request.POST:
 #         id = request.POST.get("id")

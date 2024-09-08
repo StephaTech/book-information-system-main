@@ -24,11 +24,11 @@ urlpatterns = [
     path('members', members_tab),
     path('books', books_tab),
     path('books', books),
+    
     path('save', save_member),
     path('members/add', save_member), # I will find reference at member.html form action="members/add"
-    #path('members/update', save_member),
-    #path('members/update', update_member),
-    #path('members/delete', delete_member),
+    path('members/update', save_member),
+    path('members/delete', save_member),
     
     path('save', save_book),
     path('books/add', save_book),
