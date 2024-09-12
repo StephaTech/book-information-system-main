@@ -27,19 +27,19 @@
                 <table class="table" style="margin-top: 20px;">
                     <tr>
                         <td style="text-align: left;vertical-align:middle; padding-left: 15px;">Title : </td>
-                        <td><input type="text" class="form-control" name="book_title"></td>
+                        <td><input required type="text" class="form-control" name="book_title"></td>
                     </tr>
                     <tr>
                         <td style="text-align: left;vertical-align:middle; padding-left: 15px;">Author : </td>
-                        <td><input type="text" class="form-control" name="book_author"></td>
+                        <td><input required type="text" class="form-control" name="book_author"></td>
                     </tr>
                     <tr>
                         <td style="text-align: left;vertical-align:middle; padding-left: 15px;">Genre : </td>
-                        <td><input type="text" class="form-control" name="book_genre"></td>
+                        <td><input required type="text" class="form-control" name="book_genre"></td>
                     </tr>
                     <tr>
                         <td style="text-align: left;vertical-align:middle; padding-left: 15px;">Language : </td>
-                        <td><input type="text" class="form-control" name="book_language"></td>
+                        <td><input required type="text" class="form-control" name="book_language"></td>
                     </tr>
                     <tr>
                         <!-- using boostrap for button - https://getbootstrap.com/docs/5.3/components/buttons/-->
@@ -110,7 +110,7 @@
                                 
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="updatebookModal_{{book.id}}Label">Update New Book</h1>
+                                    <h1 class="modal-title fs-5" id="updatebookModal_{{book.id}}Label">Update Book</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
